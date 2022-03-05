@@ -11,7 +11,7 @@ Building a model to predict whether a customer would be interested in Vehicle In
 
 Now, in order to predict, whether the customer would be interested in Vehicle insurance, you have information about demographics (gender, age, region code type), Vehicles (Vehicle Age, Damage), Policy (Premium, sourcing channel) etc.
 
-# Attribute Information
+## Attribute Information
 id : Unique ID for the customer
 
 Gender : Gender of the customer
@@ -36,12 +36,48 @@ Vintage : Number of Days, Customer has been associated with the company
 
 Response : 1 : Customer is interested, 0 : Customer is not interested
 
-# Introduction:
-An insurance policy is an arrangement by which a company undertakes to provide a guarantee of compensation for specified loss, damage, illness, or death in return for the payment of a specified premium. A premium is a sum of money that the customer needs to pay regularly to an insurance company for this guarantee.
-For this project, we are using the dataset that is about an Insurance company that has provided Health Insurance to its customers in past year and is now interested in providing Vehicle Insurance to its policy holders.
+## Handling Imbalance Data:
+The provided data is highly imbalanced data so I have used Random Oversampling Technique to overcome this problem.
+Random Oversampling: Random Oversampling includes selecting random examples from the minority class with replacement and supplementing the training data with multiple copies of this instance, hence it is possible that a single instance may be selected multiple times.
 
-# Objective:
-To predict if an insurance policy holder would be interested to buy a vehicle insurance as well. The aim of this project is to leverage the machine learning algorithms such as Logistic Regression, Random Forest, XGBoost, and Naive Baye's Classifier to create a predictive model using statistically significant variables from the given data set.
+As from the distribution of target variables, we know that our data is highly imbalanced.
 
-Model accuracy will be assessed using different techniques such as ROC (Receiver operating characteristic), AUC (Area under the ROC curve) and Confusion Matrix.
-# 
+![target](https://user-images.githubusercontent.com/89305804/156879197-70ff674f-842d-4796-9f16-0778642ed9b4.png)
+
+So to handle such a problem, we have balance  the data. For this problem I have used Random Oversampling technique.
+
+After using Random oversampling technique now our data is balanced.
+
+![imbalnce](https://user-images.githubusercontent.com/89305804/156879171-4c8309a8-0375-4132-80cd-9aa3408b8d5f.png)
+
+
+## Model Implementation and Evaluation:
+
+Model Name                           | Accuracy | Precision | Recall | f1 score | AUC score |
+----------                           |----------|-----------|--------|----------|-----------|
+Logistic Regression                  | 0.78     | 0.59      | 0.96   | 0.73     | 0.82      |
+Random Forest Classifier             | 0.94     | 0.90      | 0.99   | 0.94     | 0.99      |
+XG Boost Classifier                  | 0.80     | 0.66      | 0.91   | 0.77     | 0.85      |
+Naive Baye's Classifier              | 0.78     | 0.59      | 0.96   | 0.73     | 0.82      |
+
+## Conclusion:
+After Hyperparameter tuning on Random Forest model using Random Search CV we can see the slight change in the accuracy i. e.
+
+Accuracy is increased from 0.9450 to 0.9464
+
+Precision is increased from 0.9031 to 0.9055
+
+Recall is increased from 0.9967 to 0.9970
+
+F1-Score is increased from 0.9477 to 0.9489
+
+This results can said to be good for this dataset.
+
+
+
+
+
+
+
+
+
